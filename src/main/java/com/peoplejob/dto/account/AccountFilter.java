@@ -2,7 +2,7 @@ package com.peoplejob.dto.account;
 
 public class AccountFilter {
 	
-	private int id;
+	private String id;
 	private String email;
 	private String nickname; 
 	
@@ -14,11 +14,11 @@ public class AccountFilter {
 	}
 	private String password;
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String string) {
+		this.id = string;
 	}
 	public String getEmail() {
 		return email;

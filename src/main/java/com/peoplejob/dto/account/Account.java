@@ -1,6 +1,10 @@
 package com.peoplejob.dto.account;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.peoplejob.dto.board.Board;
 
 public class Account {
 	
@@ -12,7 +16,14 @@ public class Account {
 	private int emailConfirm;
 	private int jobConfirm;
 	private Date joinDate;
+	private ArrayList<Board> board;
 	
+	public ArrayList<Board> getBoard() {
+		return board;
+	}
+	public void setBoard(ArrayList<Board> board) {
+		this.board = board;
+	}
 	public int getId() {
 		return id;
 	}

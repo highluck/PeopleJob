@@ -16,34 +16,24 @@
     </context:component-scan>
     
     
-    <!-- Ioc 컨테이너 -->
-    <bean id="ioc" class="com.peoplejob.common.IocContainer">
-    	<property name="listBiz" ref="listBiz"></property>    
-    	<property name="accountBiz" ref="accountBiz"></property>        	
-    	<property name="boardBiz" ref="boardBiz"></property>
-    	<property name="authBiz" ref="authBiz"></property>
-    </bean>
-    
-    
     <!-- ServiceBiz -->
-    <bean id="listBiz" class="com.peoplejob.biz.ListBiz">
-    	<property name="listDao" ref ="listDAO"></property>
-    </bean>
-    <bean id="accountBiz" class="com.peoplejob.biz.AccountBiz">
-    	<property name="accountDao" ref="accountDAO"></property>
-    </bean>
-    <bean id="boardBiz" class="com.peoplejob.biz.BoardBiz">
-    	<property name="boardDao" ref="boardDAO"></property>
-    </bean>
-    <bean id="authBiz" class="com.peoplejob.biz.AuthBiz">
-    	<property name="authDao" ref="authDAO"></property>    	
-    </bean>
-
-
+    <bean id="listBiz" class="com.peoplejob.biz.ListBiz"/>
+    <bean id="accountBiz" class="com.peoplejob.biz.AccountBiz"/>
+    <bean id="boardBiz" class="com.peoplejob.biz.BoardBiz"/>
+    <bean id="authBiz" class="com.peoplejob.biz.AuthBiz"/>
+    
+    <!-- DAO컨테이너 -->
+	<bean id="dao" class="com.peoplejob.common.DaoContainer">
+		<property name="boardDao" ref="boardDAO"></property>
+		<property name="accountDao" ref="accountDAO"></property>
+		<property name="authDao" ref="authDAO"></property>
+	</bean> 
+	
     <!--DAO-->    
     <bean id="listDAO" class="com.peoplejob.dao.ListDAO"></bean>  
     <bean id="accountDAO" class="com.peoplejob.dao.AccountDAO"></bean>
     <bean id="boardDAO" class="com.peoplejob.dao.BoardDAO"></bean>
     <bean id="authDAO" class="com.peoplejob.dao.AuthDAO"></bean>
                      
+    	
 </beans>

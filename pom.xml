@@ -281,7 +281,14 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
-                         
+       
+        <!--Email  -->     
+     	<dependency>
+        	<groupId>javax.mail</groupId>
+        	<artifactId>mail</artifactId>
+        	<version>1.4</version>
+   	    </dependency>         
+        
         <!-- Test -->
         <dependency>
             <groupId>junit</groupId>

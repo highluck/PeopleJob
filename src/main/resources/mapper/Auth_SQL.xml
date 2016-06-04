@@ -15,7 +15,28 @@ WHERE email =  '${email}'
         <![CDATA[
         SELECT COUNT(email)
 FROM account
-WHERE email =  '${nickname}'
+WHERE nickname =  '${nickname}'
           ]]>
  	</select>
+ 	
+ 	<insert id="setAuthCode" parameterType="com.peoplejob.dto.auth.AuthFilter">
+        INSERT INTO
+        	account_auth_code (email, authCode, authDate)
+        VALUE ('${email}', '${authCode}', NOW()) 
+        ON DUPLICATE KEY UPDATE    
+        	email = '${email}', 
+       	    authCode= '${authCode}',
+        	authDate= NOW()
+     </insert>
+     
+     <select id="getEmailAuth" parameterType="com.peoplejob.dto.auth.AuthFilter" resultType="java.lang.String">
+        <![CDATA[         
+		SELECT CASE 
+			WHEN A.authCode = '${authCode}' THEN 'SUCCESS' 
+			else 'FAIL' END
+		FROM account_auth_code A
+		WHERE A.email = '${email}'
+        ]]>
+    </select>
+ 
 </mapper>

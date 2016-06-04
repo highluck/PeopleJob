@@ -2,6 +2,8 @@ package com.peoplejob.dto.board;
 
 import java.util.Date;
 
+import com.peoplejob.dto.account.Account;
+
 public class Board {
 
 	private int boardId;
@@ -10,10 +12,19 @@ public class Board {
 	private String contents;
 	private int count;
 	private Date createDate;
+	private Account account;
+	
 	private String createId;
 	private String nickName;
 	private String company;
 	
+	
+	public Account getAccount() {
+		return account;
+	}
+	public void setAccount(Account account) {
+		this.account = account;
+	}
 	public String getCompany() {
 		return company;
 	}

@@ -11,10 +11,11 @@ public class AbstractDAO {
 	protected Log log = LogFactory.getLog(AbstractDAO.class);
     
     @Autowired
-    private static SqlSessionTemplate sqlSession;
+    private SqlSessionTemplate sqlSession;
+    
     
     public void setSqlSession(SqlSessionTemplate sqlSession){
-    	AbstractDAO.sqlSession = sqlSession;
+    	this.sqlSession = sqlSession;
     }
     
     protected void printQueryId(String queryId) {

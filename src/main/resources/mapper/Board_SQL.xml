@@ -32,7 +32,8 @@ A.contents,
 A.createDate,
 B.nickName,
 B.company,
-A.count
+A.count,
+A.createId
 FROM board A
 LEFT OUTER JOIN account B 
 ON A.createId = B.id

@@ -2,6 +2,9 @@ package com.peoplejob.biz;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.peoplejob.common.DaoContainer;
 import com.peoplejob.dao.AccountDAO;
 import com.peoplejob.dto.account.Account;
 import com.peoplejob.dto.account.AccountFilter;
@@ -9,16 +12,13 @@ import com.peoplejob.dto.response.CommonResponse;
 import com.peoplejob.dto.response.LoginResponse;
 
 public class AccountBiz {
-		
-	private AccountDAO accountDao;
-
-	public void setAccountDao(AccountDAO accountDao) {
-		this.accountDao = accountDao;
-	}
+	
+	@Autowired
+	private DaoContainer dao;
 	
 	public LoginResponse Login(AccountFilter filter){
 		LoginResponse response = new LoginResponse();
-		String result = accountDao.Login(filter);
+		String result = dao.getAccountDao().Login(filter);
 		
 		if(result.equals("FAIL")){
 			response.setReason("비밀번호가 틀렸습니다.");
@@ -27,17 +27,17 @@ public class AccountBiz {
 		else{
 			response.setResult("true");
 			response.setToken(filter.getEmail());
-			response.setAccount(accountDao.GetAccount(filter));
+			response.setAccount(dao.getAccountDao().GetAccount(filter));
 		}	
 		
 		return response;
 	}
 	
 	public LoginResponse SetAccount(Account account){
-		return accountDao.SetAccount(account);
+		return dao.getAccountDao().SetAccount(account);
 	}
 	
 	public Account GetAccount(AccountFilter filter){
-		return accountDao.GetAccount(filter);
+		return dao.getAccountDao().GetAccount(filter);
 	}
 }

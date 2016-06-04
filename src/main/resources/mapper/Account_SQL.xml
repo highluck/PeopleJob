@@ -14,16 +14,20 @@ WHERE A.email = '${email}'
     </select>
      
     <select id="getAccount" parameterType="com.peoplejob.dto.account.AccountFilter" resultType="com.peoplejob.dto.account.Account">
-        <![CDATA[
 	SELECT 
 	id
 	,email
 	,nickname
 	,company
 FROM account
-where email = '${email}'
+where 
+   <if test="email != null">
+    email = '${email}'
+    </if>
 
-      ]]>
+    <if test="id != null">
+     id = ${id}
+    </if>
     </select>
     
     <insert id="setAccount" parameterType="com.peoplejob.dto.account.Account">

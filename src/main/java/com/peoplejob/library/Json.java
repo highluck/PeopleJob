@@ -8,8 +8,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class Json {
+	
 	private static Json json = new Json();
-	private Json(){}
 	public static Json getJson(){
 		return json;
 	}

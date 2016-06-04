@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.peoplejob.common.IocContainer;
+import com.peoplejob.biz.AccountBiz;
+
 
 
 import com.peoplejob.dto.account.Account;
@@ -25,13 +26,13 @@ public class AccountController {
 
 	Logger log = Logger.getLogger(this.getClass());
 	@Autowired
-	private IocContainer ioc;
+	private AccountBiz accountBiz;
 
 	  @RequestMapping(value="/accounts/login.do", method = RequestMethod.POST)
 	  public void Login(@RequestBody AccountFilter filter, HttpServletResponse response){
 		  LoginResponse result = new LoginResponse();
 		  try{
-				result = ioc.getAccountBiz().Login(filter);	
+				result = accountBiz.Login(filter);	
 			
 			}catch(Exception e){
 				result.setReason("등록된 Email이아닙니다.");
@@ -43,11 +44,13 @@ public class AccountController {
 	  
 	  @RequestMapping(value="/accounts/signup.do", method = RequestMethod.POST)
 	  public void SetAccount(@RequestBody Account account, HttpServletResponse response) throws Exception{
-		  Json.getJson().ReturnJSON(response, ioc.getAccountBiz().SetAccount(account));		  
+		 
+		  Json.getJson().ReturnJSON(response, accountBiz.SetAccount(account));		  
 	  }
 	  
 	  @RequestMapping(value="/accounts.do", method = RequestMethod.GET)
 	  public void GetAccount(@ModelAttribute AccountFilter filter, HttpServletResponse response) throws Exception{
-		  Json.getJson().ReturnJSON(response, ioc.getAccountBiz().GetAccount(filter));		  
+		  
+		  Json.getJson().ReturnJSON(response, accountBiz.GetAccount(filter));		  
 	  }
 }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.peoplejob.biz.ListBiz;
-import com.peoplejob.common.IocContainer;
 
 import com.peoplejob.dto.ListDTO;
 import com.peoplejob.library.Json;
@@ -24,7 +23,7 @@ public class HighLuckController {
 
 	Logger log = Logger.getLogger(this.getClass());
 	@Autowired
-	private IocContainer ioc;
+	private ListBiz listBiz;
 
 				
 	    @RequestMapping(value="/goods.do")
@@ -37,6 +36,6 @@ public class HighLuckController {
 	   	    
 	    @RequestMapping(value="/goodlist.do")
 	    public void ListJson(HttpServletRequest request, HttpServletResponse response) throws Exception{	    		    		    		    	
-	    	Json.getJson().ReturnJSON(response, ioc.getListBiz().SelectList()); 	    		    	    
+	    	Json.getJson().ReturnJSON(response, listBiz.SelectList()); 	    		    	    
 	    }	   
 }
