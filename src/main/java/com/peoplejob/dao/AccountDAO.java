@@ -28,8 +28,13 @@ public class AccountDAO extends AbstractDAO{
 	}
 	
 	public Account GetAccount(AccountFilter filter){
-		System.out.println(filter.getId());
 		
 		return (Account) selectOne("Account.getAccount",filter);
 	}
+	
+	public void SetLoginSecurityCode(AccountFilter filter){
+		
+		insert("Account.setSecurityCode", filter);
+	}
+	
 }

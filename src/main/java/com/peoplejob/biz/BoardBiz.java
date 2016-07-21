@@ -9,8 +9,10 @@ import com.peoplejob.dao.AccountDAO;
 import com.peoplejob.dao.BoardDAO;
 import com.peoplejob.dto.account.AccountFilter;
 import com.peoplejob.dto.board.Board;
+import com.peoplejob.dto.board.BoardComment;
 import com.peoplejob.dto.board.BoardFilter;
 import com.peoplejob.dto.board.BoardPagingFilter;
+import com.peoplejob.dto.board.SingleBoard;
 import com.peoplejob.dto.response.LoginResponse;
 
 public class BoardBiz {
@@ -26,18 +28,22 @@ public class BoardBiz {
 		return dao.getBoardDao().GetPageCount(filter);
 	}
 	
-	public Board GetBoard(BoardFilter filter){
-		Board board = dao.getBoardDao().GetBoard(filter);
+	public SingleBoard GetBoard(BoardFilter filter) throws Exception{
+		SingleBoard board = dao.getBoardDao().GetBoard(filter);
 		AccountFilter accountFilter = new AccountFilter();
-	    //AccountDAO accountDao = new AccountDAO();
-	
 	    accountFilter.setId(board.getCreateId());
-		board.setAccount(dao.getAccountDao().GetAccount(accountFilter));
+		
+	    board.setAccount(dao.getAccountDao().GetAccount(accountFilter));
+		board.setComment(dao.getBoardCommentDao().SelectBoardCommentList(filter));
 		
 		return board;
 	}
 	
 	public LoginResponse SetBoard(Board board){
 		return dao.getBoardDao().SetBoard(board);
+	}
+	
+	public LoginResponse SetBoardComment(BoardComment board){
+		return dao.getBoardCommentDao().SetBoardComment(board);
 	}
 }

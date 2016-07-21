@@ -12,6 +12,18 @@ FROM account A
 WHERE A.email = '${email}'
         ]]>
     </select>
+    
+      <select id="setSecurityCode" parameterType="com.peoplejob.dto.account.AccountFilter" resultType="java.lang.String">
+        <![CDATA[         
+  INSERT INTO
+        	account_login_code (email, securityCode, loginDate)
+        VALUE ('${email}', '${securityCode}', NOW()) 
+        ON DUPLICATE KEY UPDATE    
+        	email = '${email}', 
+       	    securityCode= '${securityCode}',
+        	loginDate= NOW()
+        ]]>
+    </select>
      
     <select id="getAccount" parameterType="com.peoplejob.dto.account.AccountFilter" resultType="com.peoplejob.dto.account.Account">
 	SELECT 

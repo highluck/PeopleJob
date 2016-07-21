@@ -19,4 +19,16 @@ public class AuthCode {
 		}
 			return result;	
 	}
+	
+	public String SecurityCode(){		
+		Random random = new Random();
+        
+		int result = random.nextInt(100000)+10000;
+		 
+		if(result>100000){
+		    result = result - 10000;
+		}
+		
+		return String.valueOf(result);
+	}
 }

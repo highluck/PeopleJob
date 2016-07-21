@@ -4,6 +4,15 @@ public class BoardPagingFilter {
 
 	private int columnNumber;
 	private int columnIndex;
+	private int jobStatus;
+
+	public int getJobStatus() {
+		return jobStatus;
+	}
+
+	public void setJobStatus(int jobStatus) {
+		this.jobStatus = jobStatus;
+	}
 
 	public int getColumnIndex() {
 		return columnIndex;

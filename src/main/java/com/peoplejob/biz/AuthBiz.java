@@ -19,7 +19,6 @@ import com.peoplejob.library.EmailSender;
 
 public class AuthBiz {
 	
-
 	@Autowired
 	private DaoContainer dao;
 	@Autowired

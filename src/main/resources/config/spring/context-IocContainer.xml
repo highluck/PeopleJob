@@ -27,6 +27,8 @@
 		<property name="boardDao" ref="boardDAO"></property>
 		<property name="accountDao" ref="accountDAO"></property>
 		<property name="authDao" ref="authDAO"></property>
+		<property name="recommendDao" ref="recommendDAO"></property>
+		<property name="boardCommentDao" ref="boardCommentDAO"></property>
 	</bean> 
 	
     <!--DAO-->    
@@ -34,6 +36,8 @@
     <bean id="accountDAO" class="com.peoplejob.dao.AccountDAO"></bean>
     <bean id="boardDAO" class="com.peoplejob.dao.BoardDAO"></bean>
     <bean id="authDAO" class="com.peoplejob.dao.AuthDAO"></bean>
+    <bean id="recommendDAO" class="com.peoplejob.dao.RecommendDAO"></bean>
+    <bean id="boardCommentDAO" class="com.peoplejob.dao.BoardCommentDAO"></bean>
                      
     	
 </beans>

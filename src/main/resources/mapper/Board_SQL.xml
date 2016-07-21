@@ -17,13 +17,13 @@ A.count
 FROM board A
 LEFT OUTER JOIN account B 
 ON A.createId = B.id
-WHERE A.delCon = 'N'
+WHERE A.delCon = 'N' AND A.jobStatus = ${jobStatus}
 ORDER BY boardId DESC
 LIMIT ${columnIndex}, ${columnNumber}
         ]]>
       </select>
       
-      <select id="getBoard" parameterType="com.peoplejob.dto.board.BoardFilter" resultType="com.peoplejob.dto.board.Board">
+      <select id="getBoard" parameterType="com.peoplejob.dto.board.BoardFilter" resultType="com.peoplejob.dto.board.SingleBoard">
         <![CDATA[
            SELECT 
 A.boardId,
@@ -53,8 +53,16 @@ FROM board
      </insert>
      
      <delete id="deleteBoard" parameterType="com.peoplejob.dto.board.Board">
-        DELTE board WHERE(boardId=${boardId})
+        DELETE board 
+        WHERE boardId=${boardId}
      </delete>
+    
+     <update id="countAdd" parameterType="com.peoplejob.dto.board.BoardFilter">
+    	UPDATE board 
+		SET count = count + 1
+		WHERE boardId = ${boardId}
+	</update>
+ 	
  
 </mapper>
 

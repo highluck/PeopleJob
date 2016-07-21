@@ -23,7 +23,8 @@ public class AuthDAO extends AbstractDAO{
 	}
 	
 	public String EmailAuth(AuthFilter filter){
-		
+		System.out.println(filter.getEmail());
+		System.out.println(filter.getAuthCode());
 		return (String)selectOne("Auth.getEmailAuth",filter);
 	}
 }

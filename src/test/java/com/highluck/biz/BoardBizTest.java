@@ -14,6 +14,7 @@ import com.peoplejob.dto.account.AccountFilter;
 import com.peoplejob.dto.board.Board;
 import com.peoplejob.dto.board.BoardFilter;
 import com.peoplejob.dto.board.BoardPagingFilter;
+import com.peoplejob.dto.board.SingleBoard;
 
 import junit.framework.Assert;
 
@@ -34,7 +35,7 @@ public class BoardBizTest {
 		BoardFilter filter = new BoardFilter();
 		AccountFilter accountFilter = new AccountFilter();
 		filter.setBoardId(1);
-		Board board = boardDao.GetBoard(filter);
+		SingleBoard board = boardDao.GetBoard(filter);
 		accountFilter.setId(board.getCreateId());
 		Account account = accountDao.GetAccount(accountFilter);
 		

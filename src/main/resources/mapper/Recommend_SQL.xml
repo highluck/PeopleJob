@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Recommend">
+     
+      <select id="getHighCountBoard" resultType="com.peoplejob.dto.board.Board">
+        <![CDATA[
+           SELECT 
+A.boardId,
+A.title,
+A.contents,
+A.createDate,
+B.nickName,
+B.company,
+A.count
+FROM board A
+LEFT OUTER JOIN account B 
+ON A.createId = B.id
+ORDER BY count DESC
+LIMIT 5 ;
+        ]]>
+      </select>      
+      
+            <select id="getRecentlyBoard" resultType="com.peoplejob.dto.board.Board">
+        <![CDATA[
+           SELECT 
+A.boardId,
+A.title,
+A.contents,
+A.createDate,
+B.nickName,
+B.company,
+A.count
+FROM board A
+LEFT OUTER JOIN account B 
+ON A.createId = B.id
+ORDER BY A.createDate DESC
+LIMIT 5 ;
+        ]]>
+      </select>  
+      
+</mapper>

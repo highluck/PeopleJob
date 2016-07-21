@@ -7,15 +7,18 @@ import com.peoplejob.dto.ListDTO;
 import com.peoplejob.dto.board.Board;
 import com.peoplejob.dto.board.BoardFilter;
 import com.peoplejob.dto.board.BoardPagingFilter;
+import com.peoplejob.dto.board.SingleBoard;
 import com.peoplejob.dto.response.LoginResponse;
 
 public class BoardDAO extends AbstractDAO {
+	
 	public ArrayList<Board> SelectBoardList(BoardPagingFilter filter) throws Exception{
         return (ArrayList<Board>)selectList("Board.getBoardList",filter);
     }
 	
-	public Board GetBoard(BoardFilter filter){
-		return (Board)selectOne("Board.getBoard",filter);
+	public SingleBoard GetBoard(BoardFilter filter){
+		update("Board.countAdd",filter);
+		return (SingleBoard)selectOne("Board.getBoard",filter);
 	}
 	
 	public int GetPageCount(BoardPagingFilter filter){

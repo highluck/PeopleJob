@@ -9,6 +9,21 @@ public class BoardComment {
 	private String contents;
 	private Date createDate;
 	private int boardId;
+	private String nickname;
+	private String company;
+	
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public int getCommentId() {
 		return commentId;
 	}

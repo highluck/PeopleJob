@@ -10,6 +10,7 @@ import com.peoplejob.dto.account.Account;
 import com.peoplejob.dto.account.AccountFilter;
 import com.peoplejob.dto.response.CommonResponse;
 import com.peoplejob.dto.response.LoginResponse;
+import com.peoplejob.library.AuthCode;
 
 public class AccountBiz {
 	
@@ -26,14 +27,23 @@ public class AccountBiz {
 		}
 		else{
 			response.setResult("true");
-			response.setToken(filter.getEmail());
+			String securityCode = AuthCode.getAuthCode().SecurityCode();
+			
+			filter.setSecurityCode(securityCode);
+			response.setToken(filter.getSecurityCode());
 			response.setAccount(dao.getAccountDao().GetAccount(filter));
+			
+			dao.getAccountDao().SetLoginSecurityCode(filter);
 		}	
 		
 		return response;
 	}
 	
 	public LoginResponse SetAccount(Account account){
+		String[] accArray = account.getEmail().split("@");
+		String[] company = accArray[1].split("[.]");
+		account.setCompany(company[0]);
+		
 		return dao.getAccountDao().SetAccount(account);
 	}
 	

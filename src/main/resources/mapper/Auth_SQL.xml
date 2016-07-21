@@ -32,7 +32,7 @@ WHERE nickname =  '${nickname}'
      <select id="getEmailAuth" parameterType="com.peoplejob.dto.auth.AuthFilter" resultType="java.lang.String">
         <![CDATA[         
 		SELECT CASE 
-			WHEN A.authCode = '${authCode}' THEN 'SUCCESS' 
+			WHEN A.authCode = ${authCode} THEN 'SUCCESS' 
 			else 'FAIL' END
 		FROM account_auth_code A
 		WHERE A.email = '${email}'

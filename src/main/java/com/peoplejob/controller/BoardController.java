@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.peoplejob.biz.BoardBiz;
 import com.peoplejob.dto.account.AccountFilter;
 import com.peoplejob.dto.board.Board;
+import com.peoplejob.dto.board.BoardComment;
 import com.peoplejob.dto.board.BoardFilter;
 import com.peoplejob.dto.board.BoardPagingFilter;
 import com.peoplejob.dto.board.BoardWrite;
@@ -39,7 +40,7 @@ public class BoardController {
 		  filter.setColumnIndex(filter.getColumnIndex() * filter.getColumnNumber());
 		  Json.getJson().ReturnJSON(response, boardBiz.SelectBoardList(filter));
 	  }
-	/*  	  
+	  	  
 	  @RequestMapping(value="/board/contents.do", method = RequestMethod.GET)
 	  public void GetBoard(@ModelAttribute BoardFilter filter, HttpServletResponse response) throws Exception{
 		 
@@ -58,5 +59,11 @@ public class BoardController {
 	  public void SetBoard(@RequestBody Board board, HttpServletResponse response) throws Exception{
 		  
 		  Json.getJson().ReturnJSON(response, boardBiz.SetBoard(board));		  
-	  }*/
+	  }
+	  
+	  @RequestMapping(value="/board/comments.do", method = RequestMethod.POST)
+	  public void SetBoardComment(@RequestBody BoardComment comment, HttpServletResponse response) throws Exception{
+		  
+		  Json.getJson().ReturnJSON(response, boardBiz.SetBoardComment(comment));		  
+	  }
 }

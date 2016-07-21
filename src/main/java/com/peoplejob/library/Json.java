@@ -25,4 +25,9 @@ public class Json {
 			e.printStackTrace();
 		}
 	} 
+	
+	public String JsonSerialize(Object obj){
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		return gson.toJson(obj);	
+	}
 }

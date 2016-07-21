@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.peoplejob.biz.AccountBiz;
-
-
-
+import com.peoplejob.common.AbstractCache;
 import com.peoplejob.dto.account.Account;
 import com.peoplejob.dto.account.AccountFilter;
 import com.peoplejob.dto.response.LoginResponse;

@@ -5,7 +5,14 @@ public class AccountFilter {
 	private String id;
 	private String email;
 	private String nickname; 
+	private String securityCode;
 	
+	public String getSecurityCode() {
+		return securityCode;
+	}
+	public void setSecurityCode(String securityCode) {
+		this.securityCode = securityCode;
+	}
 	public String getNickname() {
 		return nickname;
 	}

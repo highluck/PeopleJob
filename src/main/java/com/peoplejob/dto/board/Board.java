@@ -1,10 +1,11 @@
 package com.peoplejob.dto.board;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.peoplejob.dto.account.Account;
 
-public class Board {
+public class Board implements Serializable{
 
 	private int boardId;
 	private int parentId;
@@ -17,8 +18,14 @@ public class Board {
 	private String createId;
 	private String nickName;
 	private String company;
+	private int jobStatus;
 	
-	
+	public int getJobStatus() {
+		return jobStatus;
+	}
+	public void setJobStatus(int jobStatus) {
+		this.jobStatus = jobStatus;
+	}
 	public Account getAccount() {
 		return account;
 	}
